@@ -5,5 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Message board</title>
   </head>
-  <body></body>
+  <body>
+    <p>Hello world, index page</p>
+    <ul>
+      <% if (messages && messages.length) { %> <% messages.forEach(message => {
+      %>
+      <li>
+        <strong><%= message.user %></strong>: <%= message.text %>
+        <br />
+        <small><%= message.added.toLocaleString() %></small>
+      </li>
+      <% }) %> <% } else { %>
+      <li>No messages available.</li>
+      <% } %>
+    </ul>
+  </body>
 </html>
