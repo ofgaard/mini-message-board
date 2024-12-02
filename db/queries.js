@@ -7,6 +7,13 @@ const addMessage = async (mess, author, date) => {
   );
 };
 
+const getMessages = async () => {
+  const { rows } = await pool.query("SELECT * FROM messages");
+
+  return rows;
+};
+
 module.exports = {
   addMessage,
+  getMessages,
 };
