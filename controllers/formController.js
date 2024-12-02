@@ -1,9 +1,9 @@
 const db = require("../db/queries");
 
 const getMessages = async (req, res) => {
-  const messages = await db.getMessages;
+  const messages = await db.getMessages();
 
-  res.render("/", messages);
+  res.render("/", { messages });
 };
 
 const addMessage = async (req, res) => {
@@ -19,4 +19,4 @@ const getForm = (req, res) => {
   res.render("form");
 };
 
-module.exports = { addMessage, getForm };
+module.exports = { addMessage, getForm, getMessages };
