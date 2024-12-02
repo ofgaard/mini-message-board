@@ -11,20 +11,23 @@ if (!dbUrl) {
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS messages (
-id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-message VARCHAR ( 255 )
+  id SERIAL PRIMARY KEY,
+  message VARCHAR(255),
+  author VARCHAR(255),
+  date TIMESTAMP
 );`;
 
 const main = async () => {
   console.log("seeding");
   const client = new Client({
     connectionString: dbUrl,
-    ssl: { rejectUnauthorized: false },
+    ssl: { rejectUnauthorized: false, sslmode: "require" },
   });
   await client.connect();
   await client.query(SQL);
   await client.end();
   console.log("done");
+  console.log("Database URL:", process.env.DB_URL);
 };
 
 main();

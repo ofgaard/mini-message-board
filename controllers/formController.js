@@ -1,13 +1,10 @@
-const messages = require("../models/Message");
+const db = require("../db/queries");
 
-const addMessage = (req, res) => {
+const addMessage = async (req, res) => {
   const { messageAuthor, messageText } = req.body;
+  const date = new Date();
 
-  messages.push({
-    text: messageText,
-    user: messageAuthor,
-    added: new Date(),
-  });
+  await db.addMessage(messageAuthor, messageText, date);
 
   res.redirect("/");
 };
