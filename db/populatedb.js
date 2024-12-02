@@ -10,12 +10,15 @@ if (!dbUrl) {
 }
 
 const SQL = `
-CREATE TABLE IF NOT EXISTS messages (
+DROP TABLE IF EXISTS messages;
+
+CREATE TABLE messages (
   id SERIAL PRIMARY KEY,
   message VARCHAR(255),
   author VARCHAR(255),
   date TIMESTAMP
-);`;
+);
+`;
 
 const main = async () => {
   console.log("seeding");
