@@ -11,9 +11,9 @@
       <% if (messages && messages.length) { %> <% messages.forEach(message => {
       %>
       <li>
-        <strong><%= message.user %></strong>: <%= message.text %>
+        <strong><%= message.author %></strong>: <%= message.message %>
         <br />
-        <small><%= message.added.toLocaleString() %></small>
+        <small><%= new Date(message.date).toLocaleString() %></small>
       </li>
       <% }) %> <% } else { %>
       <li>No messages available.</li>
