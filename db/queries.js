@@ -14,7 +14,12 @@ const getMessages = async () => {
   return rows;
 };
 
+const deleteAllMessages = async () => {
+  await pool.query("DELETE FROM messages");
+};
+
 module.exports = {
   addMessage,
   getMessages,
+  deleteAllMessages,
 };

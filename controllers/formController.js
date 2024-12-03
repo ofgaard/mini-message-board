@@ -10,7 +10,7 @@ const addMessage = async (req, res) => {
   const { messageAuthor, messageText } = req.body;
   const date = new Date();
 
-  await db.addMessage(messageAuthor, messageText, date);
+  await db.addMessage(messageText, messageAuthor, date);
 
   res.redirect("/");
 };
@@ -19,4 +19,9 @@ const getForm = (req, res) => {
   res.render("form");
 };
 
-module.exports = { addMessage, getForm, getMessages };
+const deleteMessages = async (req, res) => {
+  await db.deleteAllMessages();
+  res.redirect("/");
+};
+
+module.exports = { addMessage, getForm, getMessages, deleteMessages };
